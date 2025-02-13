@@ -1,3 +1,16 @@
+/**
+ * =========================================================
+ * File: /components/landing/FaqSection.js
+ * Descripción: Sección de preguntas frecuentes con acordeones
+ * y animaciones en la aparición de cada uno.
+ * Principios aplicados:
+ * - SRP: Exclusivo para mostrar el listado de FAQs.
+ * - DRY: Reutiliza el componente Accordion de MUI.
+ * - Fail Fast & Gestión de excepciones: No hay lógicas complejas,
+ *   pero se podría integrar validación si la data viniera de un API.
+ * =========================================================
+ */
+
 'use client';
 
 import React from 'react';

@@ -1,8 +1,19 @@
+/**
+ * =========================================================
+ * File: /components/landing/ServicesSection.js
+ * Descripción: Sección para servicios generales,
+ * con borde neon y fondos oscuros.
+ * Principios aplicados:
+ * - SRP: Mostrar servicios disponibles.
+ * - DIP: Data local, separable si se requiere.
+ * - DRY: Patrón repetido en tarjetas.
+ * =========================================================
+ */
+
 'use client';
 
 import React from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
 import EngineeringIcon from '@mui/icons-material/Engineering';
@@ -10,49 +21,27 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 
 export default function ServicesSection() {
-  const theme = useTheme();
-
   const servicesData = [
     {
-      icon: (
-        <DirectionsCarFilledIcon
-          fontSize="large"
-          sx={{ color: theme.palette.primary.main }}
-        />
-      ),
+      icon: <DirectionsCarFilledIcon fontSize="large" />,
       title: 'Venta de Autos Nuevos',
       description:
         'Encuentra las últimas novedades de las marcas más importantes, con garantía y respaldo oficial.',
     },
     {
-      icon: (
-        <EngineeringIcon
-          fontSize="large"
-          sx={{ color: theme.palette.primary.main }}
-        />
-      ),
+      icon: <EngineeringIcon fontSize="large" />,
       title: 'Servicio de Taller',
       description:
         'Mantenimientos, reparaciones y checks preventivos con técnicos certificados.',
     },
     {
-      icon: (
-        <HandshakeIcon
-          fontSize="large"
-          sx={{ color: theme.palette.primary.main }}
-        />
-      ),
+      icon: <HandshakeIcon fontSize="large" />,
       title: 'Financiamiento y Leasing',
       description:
-        'Diversas opciones de pago para que te lleves el auto de tus sueños sin dolores de cabeza.',
+        'Diversas opciones de pago y planes a tu medida para que te lleves el auto de tus sueños.',
     },
     {
-      icon: (
-        <MiscellaneousServicesIcon
-          fontSize="large"
-          sx={{ color: theme.palette.primary.main }}
-        />
-      ),
+      icon: <MiscellaneousServicesIcon fontSize="large" />,
       title: 'Servicio Postventa',
       description:
         'Soporte integral y repuestos originales para que tu vehículo siempre esté en óptimas condiciones.',
@@ -65,8 +54,8 @@ export default function ServicesSection() {
       id="services-section"
       sx={{
         position: 'relative',
-        py: { xs: 8, md: 10 },
-        background: '#ffffff',
+        py: 'var(--spacing-xl)',
+        backgroundColor: '#111',
       }}
     >
       <motion.div
@@ -81,8 +70,8 @@ export default function ServicesSection() {
           sx={{
             textAlign: 'center',
             fontWeight: 'bold',
-            mb: 4,
-            color: '#2a3d66',
+            mb: 'var(--spacing-md)',
+            color: 'var(--color-secondary)',
           }}
         >
           Nuestros Servicios
@@ -101,14 +90,13 @@ export default function ServicesSection() {
             maxWidth: '800px',
             margin: '0 auto',
             textAlign: 'center',
-            mb: 6,
-            color: '#4e4e4e',
+            mb: 'var(--spacing-lg)',
+            color: 'var(--color-text-secondary)',
             fontSize: '1.1rem',
           }}
         >
-          Te acompañamos en cada paso, desde el momento en que elegís tu modelo
-          hasta el mantenimiento y el servicio postventa. Queremos que tu
-          experiencia sea impecable.
+          Te acompañamos desde la elección de tu vehículo hasta el mantenimiento
+          y servicio postventa. Queremos que tu experiencia sea excepcional.
         </Typography>
       </motion.div>
 
@@ -124,22 +112,33 @@ export default function ServicesSection() {
               <Box
                 sx={{
                   textAlign: 'center',
-                  p: 4,
-                  backgroundColor: '#fafafa',
-                  borderRadius: 0,
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                  p: 'var(--spacing-md)',
+                  backgroundColor: '#1e1e1e',
+                  border: '1px solid var(--color-secondary)',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 20px rgba(0,255,255,0.05)',
                   height: '100%',
                   transition: 'transform 0.3s',
                   '&:hover': {
-                    transform: 'translateY(-8px)',
+                    transform: 'translateY(-8px) scale(1.02)',
                   },
                 }}
               >
-                <Box sx={{ mb: 2 }}>{service.icon}</Box>
-                <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                <Box
+                  sx={{
+                    mb: 2,
+                    color: 'var(--color-primary)',
+                  }}
+                >
+                  {service.icon}
+                </Box>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 'bold', mb: 1, color: '#fff' }}
+                >
                   {service.title}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#424242' }}>
+                <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>
                   {service.description}
                 </Typography>
               </Box>

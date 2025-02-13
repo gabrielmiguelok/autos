@@ -1,3 +1,15 @@
+/**
+ * =========================================================
+ * File: /components/landing/OurTeamSection.js
+ * Descripción: Presenta al equipo principal con tarjetas
+ * flotantes y animaciones suaves.
+ * Principios aplicados:
+ * - SRP: Solo muestra el equipo.
+ * - DIP: Data local de miembros.
+ * - DRY: Estructura repetida.
+ * =========================================================
+ */
+
 'use client';
 
 import React from 'react';
@@ -8,17 +20,17 @@ const teamMembers = [
   {
     name: 'Carlos Ramírez',
     position: 'Director General',
-    photo: '/public/avatar-1.webp', // Ajusta la ruta si tu imagen se llama distinto
+    photo: '/avatar1.webp',
   },
   {
     name: 'Lucía Fernández',
     position: 'Gerente de Operaciones',
-    photo: '/public/avatar-2.webp',
+    photo: '/avatar2.webp',
   },
   {
     name: 'Miguel Torres',
     position: 'Jefe de Taller',
-    photo: '/public/avatar-3.webp',
+    photo: '/avatar3.webp',
   },
 ];
 
@@ -28,7 +40,7 @@ export default function OurTeamSection() {
       component="section"
       id="our-team-section"
       sx={{
-        backgroundColor: 'var(--color-bg-default)',
+        backgroundColor: '#0a0a0a',
         py: 'var(--spacing-xl)',
       }}
     >
@@ -45,6 +57,7 @@ export default function OurTeamSection() {
             textAlign: 'center',
             fontWeight: 'bold',
             mb: 'var(--spacing-md)',
+            color: 'var(--color-primary)',
           }}
         >
           Nuestro Equipo
@@ -68,9 +81,8 @@ export default function OurTeamSection() {
             fontSize: '1.1rem',
           }}
         >
-          Conoce a los expertos que lideran cada área de AutoCorp. Su experiencia
-          y pasión por la industria automotriz se reflejan en cada proyecto que
-          llevamos a cabo.
+          Conoce a los expertos que lideran cada área de AutoCorp. Su pasión y
+          experiencia impulsan cada proyecto al éxito.
         </Typography>
       </motion.div>
 
@@ -78,17 +90,18 @@ export default function OurTeamSection() {
         {teamMembers.map((member, idx) => (
           <Grid item xs={12} sm={4} key={idx}>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
               viewport={{ once: true }}
             >
               <Box
                 sx={{
                   textAlign: 'center',
                   p: 'var(--spacing-md)',
-                  backgroundColor: 'var(--color-bg-light)',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                  backgroundColor: '#1b1b1b',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                  borderRadius: '8px',
                 }}
               >
                 <Avatar
@@ -99,9 +112,10 @@ export default function OurTeamSection() {
                     height: 120,
                     margin: '0 auto',
                     mb: 'var(--spacing-sm)',
+                    boxShadow: '0 0 10px rgba(255,255,255,0.1)',
                   }}
                 />
-                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#fff' }}>
                   {member.name}
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>

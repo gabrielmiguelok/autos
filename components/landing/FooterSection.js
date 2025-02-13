@@ -1,3 +1,15 @@
+/**
+ * =========================================================
+ * File: /components/landing/FooterSection.js
+ * Descripción: Pie de página con formulario de contacto
+ * y datos de la empresa.
+ * Principios aplicados:
+ * - SRP: Maneja solo el footer y su contenido.
+ * - DIP: Podría inyectarse data de contacto desde un servicio.
+ * - Clean Code: Estructura clara y mantenible.
+ * =========================================================
+ */
+
 'use client';
 
 import React from 'react';
@@ -20,8 +32,7 @@ export default function FooterSection() {
       component="footer"
       id="footer-section"
       sx={{
-        position: 'relative',
-        backgroundColor: 'var(--color-bg-dark)',
+        backgroundColor: '#0a0a0a',
         py: 'var(--spacing-xl)',
       }}
     >
@@ -39,6 +50,7 @@ export default function FooterSection() {
               textAlign: 'center',
               fontWeight: 'bold',
               mb: 'var(--spacing-md)',
+              color: 'var(--color-primary)',
             }}
           >
             ¡Hablemos!
@@ -56,13 +68,13 @@ export default function FooterSection() {
             >
               <Box
                 sx={{
-                  backgroundColor: 'var(--color-bg-default)',
+                  backgroundColor: '#1b1b1b',
                   p: 'var(--spacing-md)',
-                  borderRadius: 0,
-                  boxShadow: '0px 4px 20px rgba(0,0,0,0.04)',
+                  borderRadius: '8px',
+                  boxShadow: '0px 4px 20px rgba(0,0,0,0.3)',
                 }}
               >
-                <Typography variant="h6" sx={{ mb: 'var(--spacing-sm)', fontWeight: 'bold' }}>
+                <Typography variant="h6" sx={{ mb: 'var(--spacing-sm)', fontWeight: 'bold', color: '#fff' }}>
                   Envíanos un mensaje
                 </Typography>
                 <Box component="form" noValidate autoComplete="off">
@@ -70,14 +82,32 @@ export default function FooterSection() {
                     label="Nombre"
                     variant="outlined"
                     fullWidth
-                    sx={{ mb: 'var(--spacing-sm)' }}
+                    sx={{
+                      mb: 'var(--spacing-sm)',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: '#2a2a2a',
+                        color: '#fff',
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: 'var(--color-text-secondary)',
+                      },
+                    }}
                   />
                   <TextField
                     label="Email"
                     type="email"
                     variant="outlined"
                     fullWidth
-                    sx={{ mb: 'var(--spacing-sm)' }}
+                    sx={{
+                      mb: 'var(--spacing-sm)',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: '#2a2a2a',
+                        color: '#fff',
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: 'var(--color-text-secondary)',
+                      },
+                    }}
                   />
                   <TextField
                     label="Mensaje"
@@ -85,18 +115,28 @@ export default function FooterSection() {
                     rows={4}
                     variant="outlined"
                     fullWidth
-                    sx={{ mb: 'var(--spacing-sm)' }}
+                    sx={{
+                      mb: 'var(--spacing-sm)',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: '#2a2a2a',
+                        color: '#fff',
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: 'var(--color-text-secondary)',
+                      },
+                    }}
                   />
                   <Button
                     variant="contained"
                     sx={{
-                      borderRadius: 0,
+                      borderRadius: '50px',
                       textTransform: 'none',
-                      backgroundColor: 'var(--color-primary)',
+                      background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
                       fontWeight: 'bold',
-                      transition: 'background-color var(--transition-fast)',
+                      color: '#fff',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                       '&:hover': {
-                        backgroundColor: 'var(--color-primary-dark)',
+                        background: `linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary) 100%)`,
                       },
                     }}
                   >
@@ -115,12 +155,12 @@ export default function FooterSection() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Typography variant="h6" sx={{ mb: 'var(--spacing-sm)', fontWeight: 'bold' }}>
+              <Typography variant="h6" sx={{ mb: 'var(--spacing-sm)', fontWeight: 'bold', color: '#fff' }}>
                 Contáctanos Directamente
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 'var(--spacing-sm)' }}>
                 <EmailIcon sx={{ color: 'var(--color-primary)', mr: 1 }} />
-                <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
+                <Typography variant="body1" sx={{ color: '#fff' }}>
                   <MuiLink
                     href="mailto:contacto@autocorp.com"
                     sx={{ textDecoration: 'none', color: 'inherit' }}
@@ -132,14 +172,14 @@ export default function FooterSection() {
 
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 'var(--spacing-sm)' }}>
                 <PhoneIcon sx={{ color: 'var(--color-primary)', mr: 1 }} />
-                <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
+                <Typography variant="body1" sx={{ color: '#fff' }}>
                   +1 (555) 123-4567
                 </Typography>
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 'var(--spacing-sm)' }}>
                 <LocationOnIcon sx={{ color: 'var(--color-primary)', mr: 1 }} />
-                <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
+                <Typography variant="body1" sx={{ color: '#fff' }}>
                   1234 Calle Principal, Ciudad, País
                 </Typography>
               </Box>

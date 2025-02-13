@@ -1,3 +1,15 @@
+/**
+ * =========================================================
+ * File: /components/landing/NavigationBar.js
+ * Descripción: Barra de navegación fija en la parte superior,
+ * con menú responsive y diseño oscuro.
+ * Principios aplicados:
+ * - SRP: Se encarga únicamente de la lógica y vista de la Navbar.
+ * - DIP: Enlaces de navegación se inyectan mediante un array.
+ * - KISS & DRY: Estructura limpia y reutilizable.
+ * =========================================================
+ */
+
 'use client';
 
 import React, { useState } from 'react';
@@ -12,14 +24,13 @@ const NavbarContainer = styled(Box)(() => ({
   left: 0,
   zIndex: 1100,
   width: '100%',
-  // Ajustamos altura y quitamos fondo sólido
   height: '80px',
-  backgroundColor: 'transparent',
+  backgroundColor: 'rgba(0,0,0,0.8)',
+  backdropFilter: 'blur(6px)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '0 2rem',
-  boxShadow: 'none',
 }));
 
 const LinksContainer = styled('nav')(({ theme }) => ({
@@ -33,7 +44,7 @@ const LinksContainer = styled('nav')(({ theme }) => ({
 
 const NavLink = styled(Link)(() => ({
   textDecoration: 'none',
-  color: '#fff', // Ahora en blanco para mayor contraste
+  color: 'var(--color-text-primary)',
   fontWeight: 600,
   fontSize: '1.2rem',
   position: 'relative',
@@ -60,7 +71,7 @@ const MobileMenuOverlay = styled(Box)(() => ({
   left: 0,
   width: '100%',
   height: '100vh',
-  backgroundColor: 'rgba(0,0,0,0.5)',
+  backgroundColor: 'rgba(0,0,0,0.7)',
   backdropFilter: 'blur(4px)',
   display: 'flex',
   justifyContent: 'flex-end',
@@ -71,16 +82,16 @@ const MobileMenuContainer = styled(Box)(() => ({
   width: '70%',
   maxWidth: '300px',
   height: '100%',
-  backgroundColor: 'var(--color-bg-default)',
+  backgroundColor: 'var(--color-bg-light)',
   display: 'flex',
   flexDirection: 'column',
   padding: '2rem 1rem',
-  boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+  boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
 }));
 
 const MobileNavLink = styled(Link)(() => ({
   textDecoration: 'none',
-  color: 'var(--color-text-primary)',
+  color: '#fff',
   fontSize: '1.2rem',
   fontWeight: 600,
   marginBottom: '1.5rem',
@@ -100,6 +111,7 @@ export default function NavigationBar() {
     { label: 'Inicio', href: '#hero-section' },
     { label: 'Nosotros', href: '#about-section' },
     { label: 'Soluciones', href: '#solutions-section' },
+    { label: 'Servicios', href: '#services-section' },
     { label: 'Equipo', href: '#our-team-section' },
     { label: 'FAQ', href: '#faq-section' },
     { label: 'Contacto', href: '#footer-section' },
@@ -115,7 +127,7 @@ export default function NavigationBar() {
         variant="h5"
         sx={{
           fontWeight: 700,
-          color: '#fff', // Logo en blanco
+          color: 'var(--color-primary)',
           fontSize: '1.8rem',
         }}
       >
@@ -133,7 +145,7 @@ export default function NavigationBar() {
       </LinksContainer>
 
       <BurgerMenuContainer>
-        <IconButton onClick={toggleMenu} sx={{ color: '#fff' }}>
+        <IconButton onClick={toggleMenu} sx={{ color: 'var(--color-text-primary)' }}>
           {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
       </BurgerMenuContainer>
@@ -142,7 +154,7 @@ export default function NavigationBar() {
         <MobileMenuOverlay onClick={toggleMenu}>
           <MobileMenuContainer onClick={(e) => e.stopPropagation()}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
-              <IconButton onClick={toggleMenu}>
+              <IconButton onClick={toggleMenu} sx={{ color: '#fff' }}>
                 <CloseIcon />
               </IconButton>
             </Box>

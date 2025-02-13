@@ -1,3 +1,15 @@
+/**
+ * =========================================================
+ * File: /components/landing/SolutionsSection.js
+ * Descripción: Sección con soluciones corporativas.
+ * Estilo dark-neon y transiciones elevadas.
+ * Principios aplicados:
+ * - SRP: Muestra solo la parte de soluciones.
+ * - DIP: Data de soluciones inyectada localmente (podría venir de un service).
+ * - DRY: Repetición de tarjetas con mismo estilo.
+ * =========================================================
+ */
+
 'use client';
 
 import React from 'react';
@@ -14,8 +26,8 @@ export default function SolutionsSection() {
       component="section"
       id="solutions-section"
       sx={{
-        backgroundColor: 'var(--color-bg-light)',
         py: 'var(--spacing-xl)',
+        backgroundColor: '#0d0d0d',
       }}
     >
       <motion.div
@@ -31,6 +43,7 @@ export default function SolutionsSection() {
             textAlign: 'center',
             fontWeight: 'bold',
             mb: 'var(--spacing-md)',
+            color: 'var(--color-primary)',
           }}
         >
           Nuestras Soluciones
@@ -61,141 +74,73 @@ export default function SolutionsSection() {
       </motion.div>
 
       <Grid container spacing={4} sx={{ px: { xs: 2, md: 6 } }}>
-        <Grid item xs={12} sm={6} md={3}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Box
-              sx={{
-                textAlign: 'center',
-                p: 'var(--spacing-md)',
-                backgroundColor: 'var(--color-bg-default)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                transition: 'transform var(--transition-base)',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                },
-              }}
+        {[
+          {
+            icon: <DirectionsCarIcon fontSize="large" />,
+            title: 'Flotas Corporativas',
+            description:
+              'Gestionamos la adquisición y mantenimiento de vehículos para tu empresa, optimizando costos y tiempos.',
+          },
+          {
+            icon: <EngineeringIcon fontSize="large" />,
+            title: 'Servicio Técnico',
+            description:
+              'Talleres especializados y personal certificado para atender tus vehículos con rapidez y calidad.',
+          },
+          {
+            icon: <LocalAtmIcon fontSize="large" />,
+            title: 'Financiamiento',
+            description:
+              'Ofrecemos planes de crédito y leasing corporativo para que puedas adquirir tu flota sin descapitalizarte.',
+          },
+          {
+            icon: <HandshakeIcon fontSize="large" />,
+            title: 'Consultoría & Alianzas',
+            description:
+              'Te asesoramos en el diseño de tu proyecto automotriz y establecemos conexiones estratégicas.',
+          },
+        ].map((sol, idx) => (
+          <Grid item xs={12} sm={6} md={3} key={idx}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
             >
-              <DirectionsCarIcon
-                fontSize="large"
-                sx={{ color: 'var(--color-primary)', mb: 'var(--spacing-sm)' }}
-              />
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 'var(--spacing-xs)' }}>
-                Flotas Corporativas
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>
-                Gestionamos la adquisición y mantenimiento de vehículos para tu
-                empresa, optimizando costos y tiempos.
-              </Typography>
-            </Box>
-          </motion.div>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={3}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <Box
-              sx={{
-                textAlign: 'center',
-                p: 'var(--spacing-md)',
-                backgroundColor: 'var(--color-bg-default)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                transition: 'transform var(--transition-base)',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                },
-              }}
-            >
-              <EngineeringIcon
-                fontSize="large"
-                sx={{ color: 'var(--color-primary)', mb: 'var(--spacing-sm)' }}
-              />
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 'var(--spacing-xs)' }}>
-                Servicio Técnico
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>
-                Contamos con talleres especializados y personal certificado para
-                atender tus vehículos con rapidez y calidad.
-              </Typography>
-            </Box>
-          </motion.div>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={3}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Box
-              sx={{
-                textAlign: 'center',
-                p: 'var(--spacing-md)',
-                backgroundColor: 'var(--color-bg-default)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                transition: 'transform var(--transition-base)',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                },
-              }}
-            >
-              <LocalAtmIcon
-                fontSize="large"
-                sx={{ color: 'var(--color-primary)', mb: 'var(--spacing-sm)' }}
-              />
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 'var(--spacing-xs)' }}>
-                Financiamiento
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>
-                Ofrecemos planes de crédito y leasing corporativo para que puedas
-                adquirir tu flota sin descapitalizar tu empresa.
-              </Typography>
-            </Box>
-          </motion.div>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={3}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <Box
-              sx={{
-                textAlign: 'center',
-                p: 'var(--spacing-md)',
-                backgroundColor: 'var(--color-bg-default)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                transition: 'transform var(--transition-base)',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                },
-              }}
-            >
-              <HandshakeIcon
-                fontSize="large"
-                sx={{ color: 'var(--color-primary)', mb: 'var(--spacing-sm)' }}
-              />
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 'var(--spacing-xs)' }}>
-                Consultoría y Alianzas
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>
-                Te asesoramos en el diseño de tu proyecto automotriz y generamos
-                alianzas estratégicas para impulsar tu crecimiento.
-              </Typography>
-            </Box>
-          </motion.div>
-        </Grid>
+              <Box
+                sx={{
+                  textAlign: 'center',
+                  p: 'var(--spacing-md)',
+                  backgroundColor: '#1a1a1a',
+                  boxShadow: '0 4px 20px rgba(0,255,255,0.05)',
+                  borderRadius: '8px',
+                  transition: 'transform var(--transition-base)',
+                  '&:hover': {
+                    transform: 'translateY(-8px) scale(1.03)',
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    mb: 'var(--spacing-sm)',
+                    color: 'var(--color-secondary)',
+                  }}
+                >
+                  {sol.icon}
+                </Box>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 'bold', mb: 'var(--spacing-xs)', color: '#fff' }}
+                >
+                  {sol.title}
+                </Typography>
+                <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)' }}>
+                  {sol.description}
+                </Typography>
+              </Box>
+            </motion.div>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );
