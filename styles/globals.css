@@ -1,45 +1,41 @@
 /**
  * =========================================================
  * File: /styles/globals.css
- * Descripción: Variables globales, resets y clases utilitarias.
+ * Descripción: Variables globales, resets y clases utilitarias
+ * enfocadas en un diseño oscuro y más corporativo.
  * Principios aplicados:
  * - SSOT: Centralizamos las variables aquí.
- * - KISS & DRY: Se aprovechan las mismas variables en todo el sitio.
+ * - KISS & DRY: Reutilizamos variables en todos los componentes.
  * =========================================================
  */
 
-/* ---------------------------------------------------------
-   VARIABLES GLOBALES
-   --------------------------------------------------------- */
 :root {
-  /* Paleta de colores vibrante y contrastante para fondo oscuro */
-  --color-primary: #ff007f;    /* Rosa neón */
-  --color-secondary: #1ee3cf;  /* Turquesa neón */
-  --color-primary-dark: #d60069;
-  --color-bg-default: #0a0a0a; /* Fondo principal oscuro */
-  --color-bg-light: #1b1b1b;   /* Fondo ligeramente menos oscuro */
+  /* Paleta de colores corporativos y formales en modo oscuro */
+  --color-primary: #00509e;        /* Azul corporativo */
+  --color-secondary: #ffbc42;      /* Color de acento cálido */
+  --color-primary-dark: #003b73;   /* Versión más oscura del azul */
+  --color-bg-default: #1b1b1b;     /* Fondo principal oscuro */
+  --color-bg-light: #2b2b2b;       /* Fondo ligeramente menos oscuro */
   --color-text-primary: #ffffff;
   --color-text-secondary: #cccccc;
 
+  /* Tipografía y tamaños */
   --font-family-base: 'Work Sans', sans-serif;
   --font-size-base: 16px;
 
+  /* Espaciados */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
 
+  /* Transiciones y animaciones */
   --transition-fast: 0.2s ease-in-out;
   --transition-base: 0.3s ease;
-
-  /* Animaciones personalizadas */
   --loader-size: 80px;
 }
 
-/* ---------------------------------------------------------
-   RESET BÁSICO
-   --------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -56,9 +52,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ---------------------------------------------------------
-   ENLACES
-   --------------------------------------------------------- */
 a {
   color: var(--color-primary);
   text-decoration: none;
@@ -68,39 +61,28 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* ---------------------------------------------------------
-   TITULARES
-   --------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--spacing-sm);
   line-height: 1.2;
   color: var(--color-text-primary);
 }
 
-/* ---------------------------------------------------------
-   BOTONES
-   --------------------------------------------------------- */
 button {
   font-family: var(--font-family-base);
   cursor: pointer;
   color: var(--color-text-primary);
 }
 
-/* ---------------------------------------------------------
-   ANIMACIÓN DE PRELOADER (remolino giratorio)
-   --------------------------------------------------------- */
+.text-center {
+  text-align: center;
+}
+
+.mb-2 {
+  margin-bottom: var(--spacing-sm);
+}
+
 @keyframes swirlSpin {
   0%   { transform: rotate(0deg) scale(1); }
   50%  { transform: rotate(180deg) scale(1.3); }
   100% { transform: rotate(360deg) scale(1); }
-}
-
-/* ---------------------------------------------------------
-   CLASES UTILES
-   --------------------------------------------------------- */
-.text-center {
-  text-align: center;
-}
-.mb-2 {
-  margin-bottom: var(--spacing-sm);
 }
